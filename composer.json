@@ -1,0 +1,22 @@
+{
+    "name": "staffanselander/realtime-logger",
+    "description": "RealtimeLogger for PHP",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "RealtimeLogger\\": "RealtimeLogger"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RealtimeLogger\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "cboden/ratchet": "^0.3.5",
+        "textalk/websocket": "^1.2"
+    }
+}
