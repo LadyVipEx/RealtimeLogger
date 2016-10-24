@@ -70,7 +70,7 @@ class MessageComponent implements MessageComponentInterface {
      * @param  ConnectionInterface $connection
      * @param  Exception           $exception
      */
-    public function onError(ConnectionInterface $connection, Exception $exception)
+    public function onError(ConnectionInterface $connection, \Exception $exception)
     {
         print 'An error has occured: ' . $exception->getMessage() . "\n";
     }
