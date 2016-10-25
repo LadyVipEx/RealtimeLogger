@@ -17,13 +17,17 @@ class MultipleValueDescriber extends AbstractValueDescriber
     {
         $describedValues = [];
 
+        $this->getValueDescriber()->increaseNestingLevel();
+
         foreach ($values as $key => $value) 
         {
-            $describedValues[] = (new ValueDescriber)
+            $describedValues[] = $this->getValueDescriber()
                 ->getValueDescriber($value)
                 ->setKey($key)
                 ->getDescribed();
         }
+
+        $this->getValueDescriber()->decreaseNestingLevel();
 
         return $this->setValue($describedValues);
     }

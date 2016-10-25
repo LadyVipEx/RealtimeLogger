@@ -24,7 +24,7 @@ class ObjectValueDescriber extends AbstractValueDescriber
 
         foreach ($reflectionObject->getConstants() as $key => $value) 
         {
-            $describedValues[] = (new ValueDescriber)
+            $describedValues[] = $this->getValueDescriber()
                 ->getValueDescriber($value)
                 ->setPrefix('const')
                 ->setKey($key)
@@ -35,7 +35,7 @@ class ObjectValueDescriber extends AbstractValueDescriber
         {
             $reflectionProperty->setAccessible(true);
 
-            $describedValues[] = (new ValueDescriber)
+            $describedValues[] = $this->getValueDescriber()
                 ->getValueDescriber($reflectionProperty->getValue($object))
                 ->setPrefix($this->getVisibility($reflectionProperty))
                 ->setKey($reflectionProperty->getName())
@@ -51,7 +51,7 @@ class ObjectValueDescriber extends AbstractValueDescriber
                 $parameters[] = $reflectionParameter->getName();
             }
 
-            $describedValues[] = (new ValueDescriber)
+            $describedValues[] = $this->getValueDescriber()
                 ->getValueDescriber('function(' . join(', ', $parameters) . ') {}')
                 ->setPrefix($this->getVisibility($reflectionMethod))
                 ->isExplainingString(true)

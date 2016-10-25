@@ -4,9 +4,11 @@ namespace RealtimeLogger\Client\Describer;
 
 abstract class AbstractValueDescriber
 {
-    protected $originalValue;
-
     protected $explainingString;
+
+    protected $valueDescriber;
+
+    protected $originalValue;
 
     protected $key = false;
 
@@ -37,6 +39,18 @@ abstract class AbstractValueDescriber
     public function handleValue($value)
     {
         return $this->setValue($value);
+    }
+
+    public function setValueDescriber($valueDescriber)
+    {
+        $this->valueDescriber = $valueDescriber;
+
+        return $this;
+    }
+
+    public function getValueDescriber()
+    {
+        return $this->valueDescriber;
     }
 
     public function setOriginalValue($value)
