@@ -60,7 +60,7 @@ class ValueDescriber
         switch (gettype($value))
         {
             case 'array':
-                    if ($this->getNestingLevel() > 11) 
+                    if ($this->getNestingLevel() > 3) 
                     {
                         return (new SingleValueDescriber)
                             ->setValueDescriber($this)
@@ -72,7 +72,7 @@ class ValueDescriber
                 break;
 
             case 'object':
-                    if ($this->getNestingLevel() > 11) 
+                    if ($this->getNestingLevel() > 3) 
                     {
                         return (new SingleValueDescriber)
                             ->setValueDescriber($this)
